@@ -118,7 +118,7 @@ def crawl_loop(initial_sa_tuples: List[Tuple[str, Credentials, List[str]]],
       updated_chain = chain_so_far + [sa_name]
 
       # Get GCP Compute Resources
-      compute_service = ClientFactory.get_client("compute").get_service()
+      compute_service = ClientFactory.get_client("compute").get_service(credentials)
       if is_set(scan_config, 'compute_instances'):
         project_result['compute_instances'] = CrawlCompute.get_compute_instances_names(
           project_id,
